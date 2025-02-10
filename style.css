@@ -7,6 +7,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, 10rem);
     gap: 1rem;
+    padding: 1rem;
 }
 
 .newBookButton {
@@ -25,4 +26,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.newBookDialog input {
+    margin-bottom: 1rem;
+}
+
+.newBookDialog input[type="text"],
+.newBookDialog button {
+    display: block;
 }
