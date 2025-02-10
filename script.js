@@ -90,7 +90,10 @@ function createNewBookHtmlItem(book) {
   });
   const toggleReadButton = document.createElement("button");
   toggleReadButton.className = "toggleReadButton";
-  toggleReadButton.setAttribute("title", "Mark as read");
+  book.read
+    ? setReadButtonToReadState(toggleReadButton)
+    : setReadButtonToUnreadState(toggleReadButton);
+
   buttonDiv.appendChild(removeButton);
   buttonDiv.appendChild(toggleReadButton);
 
@@ -111,6 +114,22 @@ function removeBookFromLibrary(bookId) {
   console.error(
     `Requested to remove book with ID ${bookId}, but that ID was not found.`
   );
+}
+
+function setReadButtonToReadState(toggleReadButton) {
+  if (!toggleReadButton) {
+    toggleReadButton = document.querySelector(".toggleReadButton");
+  }
+  toggleReadButton.setAttribute("id", "bookRead");
+  toggleReadButton.setAttribute("title", "Mark as unread");
+}
+
+function setReadButtonToUnreadState(toggleReadButton) {
+  if (!toggleReadButton) {
+    toggleReadButton = document.querySelector(".toggleReadButton");
+  }
+  toggleReadButton.setAttribute("id", "bookUnread");
+  toggleReadButton.setAttribute("title", "Mark as read");
 }
 
 addBookToLibrary("Pattern Recognition", "William Gibson");
