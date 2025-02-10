@@ -51,17 +51,16 @@ body {
 
 .toggleReadButton {
   background: url(icons/checkbox-marked-circle-outline.svg) no-repeat;
-
 }
 
 #bookRead {
-    background-color: #faebd7;
-    background-blend-mode: normal;
+  background-color: #faebd7;
+  background-blend-mode: normal;
 }
 
 #bookUnread {
-    background-color: #faebd7bd;
-    background-blend-mode: lighten;
+  background-color: #faebd7bd;
+  background-blend-mode: lighten;
 }
 
 .newBookDialog input {

@@ -93,6 +93,11 @@ function createNewBookHtmlItem(book) {
   book.read
     ? setReadButtonToReadState(toggleReadButton)
     : setReadButtonToUnreadState(toggleReadButton);
+  toggleReadButton.addEventListener("click", (event) => {
+    const bookCard = event.target.parentNode.parentNode;
+    const bookId = bookCard.getAttribute("data-id");
+    toggleReadState(event.target, bookId);
+  });
 
   buttonDiv.appendChild(removeButton);
   buttonDiv.appendChild(toggleReadButton);
@@ -116,18 +121,45 @@ function removeBookFromLibrary(bookId) {
   );
 }
 
-function setReadButtonToReadState(toggleReadButton) {
-  if (!toggleReadButton) {
-    toggleReadButton = document.querySelector(".toggleReadButton");
+function toggleReadState(readButton, bookId) {
+  // Use the UI state as the source of truth, since in the event of a mismatch
+  // with the library state, it better represents the user's intent.
+  const readButtonId = readButton.getAttribute("id");
+  if ((readButtonId !== "bookRead") & (readButtonId !== "bookUnread")) {
+    console.error(
+      `Unexpected ID for the read button: ${readButtonId}. Not toggling read state.`
+    );
+    return;
   }
+
+  if (readButtonId === "bookRead") {
+    setReadButtonToUnreadState(readButton);
+  } else {
+    setReadButtonToReadState(readButton);
+  }
+
+  bookId = parseInt(bookId);
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].id === bookId) {
+      myLibrary[i].read = !myLibrary[i].read;
+      return;
+    }
+  }
+  console.error(
+    `Requested to change read state of book with ID ${bookId}, but that ID was not found.`
+  );
+}
+
+function setReadButtonToReadState(
+  toggleReadButton = document.querySelector(".toggleReadButton")
+) {
   toggleReadButton.setAttribute("id", "bookRead");
   toggleReadButton.setAttribute("title", "Mark as unread");
 }
 
-function setReadButtonToUnreadState(toggleReadButton) {
-  if (!toggleReadButton) {
-    toggleReadButton = document.querySelector(".toggleReadButton");
-  }
+function setReadButtonToUnreadState(
+  toggleReadButton = document.querySelector(".toggleReadButton")
+) {
   toggleReadButton.setAttribute("id", "bookUnread");
   toggleReadButton.setAttribute("title", "Mark as read");
 }
