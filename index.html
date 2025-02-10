@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="bookshelf"></div>
 
     <dialog class="newBookDialog">
-        <form id="new-book-form" action="/fake/server/action" method="post">
-            <input type="text" id="title" placeholder="Title">
-            <input type="text" id="author" placeholder="Author">
-            <input type="checkbox" id="read-toggle">
-<label for="read-toggle">Already read?</label>
-            <button type="submit" id="new-book-submit">Add new book</button>
-        </form>
-      </dialog>
+      <form id="new-book-form" action="/fake/server/action" method="post">
+        <input type="text" id="title" placeholder="Title" />
+        <input type="text" id="author" placeholder="Author" />
+        <input type="checkbox" id="read-toggle" />
+        <label for="read-toggle">Already read?</label>
+        <button type="submit" id="new-book-submit">Add new book</button>
+      </form>
+    </dialog>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

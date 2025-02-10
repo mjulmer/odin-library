@@ -33,7 +33,7 @@ body {
   margin-top: auto;
   display: flex;
   width: 9rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   justify-content: space-between;
   /* align-items: stretch; */
 }
