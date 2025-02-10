@@ -1,6 +1,7 @@
 "use strict";
 
 const myLibrary = [];
+let uniqueIds = 0;
 
 function Book(title, author, read = false) {
   if (!new.target) {
@@ -9,6 +10,8 @@ function Book(title, author, read = false) {
   this.title = title;
   this.author = author;
   this.read = read;
+  this.id = uniqueIds;
+  uniqueIds += 1;
 }
 
 Book.prototype.isRead = function (value) {
@@ -67,6 +70,7 @@ function addNewBookButton() {
 
 function createNewBookHtmlItem(book) {
   const bookElement = document.createElement("div");
+  bookElement.setAttribute("data-id", book.id);
   bookElement.className = "book";
   const bookTitle = document.createElement("p");
   bookTitle.textContent = book.title;
