@@ -77,9 +77,20 @@ function createNewBookHtmlItem(book) {
   const bookAuthor = document.createElement("p");
   bookAuthor.textContent = book.author;
 
+  const buttonDiv = document.createElement("div");
+  buttonDiv.className = "buttonDiv";
+  const removeButton = document.createElement("button");
+  removeButton.className = "removeButton";
+  removeButton.setAttribute("title", "Remove book");
+  const toggleReadButton = document.createElement("button");
+  toggleReadButton.className = "toggleReadButton";
+  toggleReadButton.setAttribute("title", "Mark as read");
+  buttonDiv.appendChild(removeButton);
+  buttonDiv.appendChild(toggleReadButton);
+
   bookElement.appendChild(bookTitle);
   bookElement.appendChild(bookAuthor);
-
+  bookElement.appendChild(buttonDiv);
   return bookElement;
 }
 

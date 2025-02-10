@@ -1,38 +1,65 @@
 body {
-    background-color: rgb(31, 31, 31);
-    font-family: sans-serif;
+  background-color: rgb(31, 31, 31);
+  font-family: sans-serif;
 }
 
 .bookshelf {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 10rem);
-    gap: 1rem;
-    padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 10rem);
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .newBookButton {
-    background: url(icons/plus.svg) no-repeat;
-    justify-content: end;
-    font-size: 1rem;
-    padding-bottom: 2rem;
+  background: url(icons/plus.svg) no-repeat;
+  justify-content: end;
+  font-size: 1rem;
+  padding-bottom: 2rem;
 }
 
-.book, .newBookButton {
-    width: 10rem;
-    height: 15rem;
-    background-color: antiquewhite;
-    color: #412818;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.book,
+.newBookButton {
+  width: 10rem;
+  height: 15rem;
+  background-color: #faebd7;
+  color: #412818;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonDiv {
+  margin-top: auto;
+  display: flex;
+  width: 9rem;
+  margin-bottom: .5rem;
+  justify-content: space-between;
+  /* align-items: stretch; */
+}
+
+.removeButton,
+.toggleReadButton {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+}
+
+.removeButton {
+  background: url(icons/close-circle-outline.svg) no-repeat;
+}
+
+.toggleReadButton {
+  background: url(icons/checkbox-marked-circle-outline.svg) no-repeat;
+  background-color: #faebd7bd;
+  background-blend-mode: lighten;
 }
 
 .newBookDialog input {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .newBookDialog input[type="text"],
 .newBookDialog button {
-    display: block;
+  display: block;
 }
