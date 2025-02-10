@@ -82,6 +82,12 @@ function createNewBookHtmlItem(book) {
   const removeButton = document.createElement("button");
   removeButton.className = "removeButton";
   removeButton.setAttribute("title", "Remove book");
+  removeButton.addEventListener("click", (event) => {
+    const bookCard = event.target.parentNode.parentNode;
+    const bookId = bookCard.getAttribute("data-id");
+    removeBookFromLibrary(bookId);
+    bookCard.remove();
+  });
   const toggleReadButton = document.createElement("button");
   toggleReadButton.className = "toggleReadButton";
   toggleReadButton.setAttribute("title", "Mark as read");
@@ -94,11 +100,23 @@ function createNewBookHtmlItem(book) {
   return bookElement;
 }
 
+function removeBookFromLibrary(bookId) {
+  bookId = parseInt(bookId);
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].id === bookId) {
+      myLibrary.splice(i, 1);
+      return;
+    }
+  }
+  console.error(
+    `Requested to remove book with ID ${bookId}, but that ID was not found.`
+  );
+}
+
 addBookToLibrary("Pattern Recognition", "William Gibson");
 addBookToLibrary("Piranesi", "Susanna Clarke");
 addBookToLibrary("walkaway", "Cory Doctorow");
 
 myLibrary.at(1).isRead(true);
 
-// addBooksToDom();
 setUpUiElements();
