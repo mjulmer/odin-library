@@ -3,20 +3,24 @@
 const myLibrary = [];
 let uniqueIds = 0;
 
-function Book(title, author, read = false) {
-  if (!new.target) {
-    throw Error("Book function should only be used as a constructor.");
-  }
-  this.title = title;
-  this.author = author;
-  this.read = read;
-  this.id = uniqueIds;
-  uniqueIds += 1;
-}
+class Book {
+  title;
+  author;
+  read;
+  id;
 
-Book.prototype.isRead = function (value) {
-  this.read = value;
-};
+  constructor(title, author, read = false) {
+    this.title = title;
+    this.author = author;
+    this.read = read;
+    this.id = uniqueIds;
+    uniqueIds += 1;
+  }
+
+  isRead (value) {
+    this.read = value;
+  }
+}
 
 function addBookToLibrary(title, author, read = false) {
   myLibrary.push(new Book(title, author, read));
