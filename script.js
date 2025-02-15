@@ -17,7 +17,7 @@ class Book {
     uniqueIds += 1;
   }
 
-  isRead (value) {
+  isRead(value) {
     this.read = value;
   }
 }
@@ -55,7 +55,10 @@ function addNewBookButton() {
   newBookButton.className = "newBookButton";
   newBookButton.textContent = "Add new book";
   const newBookDialog = document.querySelector(".newBookDialog");
-  newBookButton.addEventListener("click", () => newBookDialog.showModal());
+  newBookButton.addEventListener("click", () => {
+    document.querySelector("#new-book-form").reset();
+    newBookDialog.showModal();
+  });
 
   const submitButton = document.querySelector("#new-book-submit");
   submitButton.addEventListener("click", (event) => {
