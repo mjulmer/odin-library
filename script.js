@@ -1,7 +1,6 @@
 "use strict";
 
 const myLibrary = [];
-let uniqueIds = 0;
 
 class Book {
   title;
@@ -13,14 +12,17 @@ class Book {
     this.title = title;
     this.author = author;
     this.read = read;
-    this.id = uniqueIds;
-    uniqueIds += 1;
+    this.id = Book.uniqueIds;
+    Book.uniqueIds += 1;
+    console.log(Book.uniqueIds);
   }
 
   isRead(value) {
     this.read = value;
   }
 }
+
+Book.uniqueIds = 0;
 
 function addBookToLibrary(title, author, read = false) {
   myLibrary.push(new Book(title, author, read));
