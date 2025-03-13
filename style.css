@@ -71,3 +71,7 @@ body {
 .newBookDialog button {
   display: block;
 }
+
+input.invalid {
+  border: red solid 2px;
+}

@@ -11,8 +11,8 @@
 
     <dialog class="newBookDialog">
       <form id="new-book-form" action="/fake/server/action" method="post">
-        <input type="text" id="title" placeholder="Title" />
-        <input type="text" id="author" placeholder="Author" />
+        <input type="text" id="title" placeholder="Title" required />
+        <input type="text" id="author" placeholder="Author" required />
         <input type="checkbox" id="read-toggle" />
         <label for="read-toggle">Already read?</label>
         <button type="submit" id="new-book-submit">Add new book</button>

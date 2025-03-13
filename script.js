@@ -62,13 +62,43 @@ function addNewBookButton() {
     newBookDialog.showModal();
   });
 
+  const titleField = document.querySelector("#title");
+  titleField.addEventListener("focusout", () =>
+    updateFieldValidity(titleField)
+  );
+  titleField.addEventListener("focusin", () =>
+    titleField.classList.remove("invalid")
+  );
+  const authorField = document.querySelector("#author");
+  authorField.addEventListener("focusout", () =>
+    updateFieldValidity(authorField)
+  );
+  authorField.addEventListener("focusin", () =>
+    authorField.classList.remove("invalid")
+  );
+
+  function updateFieldValidity(element) {
+    if (element.checkValidity()) {
+      element.classList.remove("invalid");
+    } else {
+      element.classList.add("invalid");
+    }
+  }
+
   const submitButton = document.querySelector("#new-book-submit");
   submitButton.addEventListener("click", (event) => {
     event.preventDefault();
 
+    const titleField = document.querySelector("#title");
+    const authorField = document.querySelector("#author");
+
+    if (!titleField.checkValidity() || !authorField.checkValidity()) {
+      return;
+    }
+
     addBookToLibraryAndDom(
-      document.querySelector("#title").value,
-      document.querySelector("#author").value,
+      titleField.value,
+      authorField.value,
       document.querySelector("#read-toggle").checked
     );
     newBookDialog.close();
